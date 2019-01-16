@@ -4,6 +4,7 @@ export const Container = styled.div`
   background-image: linear-gradient(138deg, #f9f9f9, #efefef);
   width: 320px;
   height: 480px;
+  padding: 0 10px;
 
   form {
     margin-top: 45px;
@@ -36,6 +37,8 @@ export const Container = styled.div`
         border-radius: 3px;
         background-color: #ffffff;
         border: 1px solid #ddd;
+        font-size: 16px;
+        padding: 0 10px;
       }
     }
   }
