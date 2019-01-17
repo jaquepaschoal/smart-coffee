@@ -3,14 +3,15 @@ import Header from "../../components/Header";
 
 import DoubleCoffee from "../../assets/cafe-duplo.svg";
 
-import { Container, Main, Separator, Button } from "./style";
+import { Container, Product, Separator } from "../../styles/global";
+import { Button } from "./style";
 
 class Recipes extends Component {
   render() {
     return (
       <Container>
         <Header />
-        <Main>
+        <Product>
           <div>
             <figure>
               <img alt="Double Coffee" src={DoubleCoffee} />
@@ -20,13 +21,13 @@ class Recipes extends Component {
               <small>0:45min</small>
             </div>
           </div>
-          <div>
-            <input class="" type="checkbox" id="check" name="inp-check" />
+          <div name="check">
+            <input type="checkbox" id="check" name="inp-check" />
             <label for="check" />
           </div>
-        </Main>
+        </Product>
         <Separator />
-        <Main>
+        <Product>
           <div>
             <figure>
               <img alt="Double Coffee" src={DoubleCoffee} />
@@ -36,11 +37,11 @@ class Recipes extends Component {
               <small>0:45min</small>
             </div>
           </div>
-          <div>
+          <div name="check">
             <input type="checkbox" id="check2" name="inp-check" />
             <label for="check2" />
           </div>
-        </Main>
+        </Product>
         <Separator />
         <Button>Continuar</Button>
       </Container>
