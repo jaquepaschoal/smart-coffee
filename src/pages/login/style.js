@@ -5,6 +5,7 @@ export const Container = styled.div`
   width: 320px;
   height: 480px;
   padding: 0 10px;
+  box-shadow: 0px 1px 4px rgba(0,0,0,0.15);
 
   form {
     margin-top: 45px;
@@ -39,6 +40,7 @@ export const Container = styled.div`
         border: 1px solid #ddd;
         font-size: 16px;
         padding: 0 10px;
+        outline: none;
       }
     }
   }
