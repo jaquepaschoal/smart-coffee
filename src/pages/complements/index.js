@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
+import Error from "../../components/Error";
 
 import DoubleCoffee from "../../assets/cafe-duplo.svg";
 
@@ -8,7 +9,8 @@ import { Ingredients, ContentButtons, Button } from "./style";
 
 class Complements extends Component {
   state = {
-    counter: 0
+    counter: 0,
+    isError: false
   };
 
   handleCheck(e) {
@@ -17,26 +19,28 @@ class Complements extends Component {
 
     if (e.target.checked) {
       count++;
-      valueLimit(count) ? check(e.target) : false;
+      valueLimit(count) ? check(e.target, this) : false;
     } else {
       count--;
       if (!valueLimit(count)) {
-        uncheck(e.target);
+        uncheck(e.target, this);
       }
     }
 
-    function check(value) {
+    function check(value, component) {
       return checks.forEach(value => {
         if (!value.checked) {
           value.disabled = true;
+          component.setState({ isError: true });
         }
       });
     }
 
-    function uncheck(value) {
+    function uncheck(value, component) {
       return checks.forEach(value => {
         if (value.disabled) {
           value.disabled = false;
+          component.setState({ isError: false });
         }
       });
     }
@@ -53,6 +57,7 @@ class Complements extends Component {
       <Container>
         <Header />
         <h2>Adicione complementos ao seu pedido</h2>
+        {this.state.isError && <Error />}
         <Product>
           <div>
             <figure>
