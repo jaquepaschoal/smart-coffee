@@ -9,6 +9,7 @@
     "moment": "^2.22.2",
     "prop-types": "^15.6.2",
     "react": "^16.4.2",
+    "react-countdown-clock": "^2.5.0",
     "react-dom": "^16.4.2",
     "react-fontawesome": "^1.6.1",
     "react-redux": "^5.0.7",

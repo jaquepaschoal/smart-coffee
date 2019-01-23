@@ -13,6 +13,12 @@ export const Main = styled.div`
   }
 `;
 
+export const Countdown = styled.div`
+  display: flex;
+  justify-content: center;
+  padding-top: 25px;
+`;
+
 export const Coupon = styled.div`
   display: flex;
   justify-content: center;
