@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Main = styled.div`
   h2 {
@@ -10,6 +11,11 @@ export const Main = styled.div`
     text-align: center;
     margin: 39px auto;
     color: #5e4429;
+
+    @media print {
+      display: none;
+      margin: 20px;
+    }
   }
 `;
 
@@ -17,6 +23,10 @@ export const Countdown = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 25px;
+
+  @media print {
+    display: none;
+  }
 `;
 
 export const Coupon = styled.div`
@@ -42,9 +52,14 @@ export const ContentButtons = styled.div`
   width: 100%;
   padding-bottom: 24px;
   margin-top: 31px;
+
+  @media print {
+    display: none;
+    margin: 20px;
+  }
 `;
 
-export const Button = styled.div`
+export const Button = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,9 +69,9 @@ export const Button = styled.div`
 
   font-family: "Lato", sans-serif;
   font-size: ${props => (props.reload ? "25px" : "14px")};
-  font-weight: 300;
   line-height: 1.36;
   letter-spacing: 2.4px;
+  text-decoration: none;
   text-transform: uppercase;
   color: #ffffff;
   cursor: pointer;

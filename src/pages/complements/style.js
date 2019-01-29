@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const Ingredients = styled.div`
   display: flex;
@@ -28,13 +29,18 @@ export const Ingredients = styled.div`
 `;
 
 export const ContentButtons = styled.div`
-  background-color: blue;
+  display: flex;
+  width: 100%;
+  height: 49px;
 `;
 
-export const Button = styled.button`
-  width: 160px;
-  height: 49px;
+export const Button = styled(Link)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
   border: none;
+  text-decoration: none;
   background-color: ${props => (props.orange ? "#d15f41" : "#3dc890")};
   font-family: "Lato", sans-serif;
   font-size: 14px;
@@ -43,5 +49,4 @@ export const Button = styled.button`
   letter-spacing: 2.4px;
   text-transform: uppercase;
   color: #ffffff;
-  cursor: pointer;
 `;

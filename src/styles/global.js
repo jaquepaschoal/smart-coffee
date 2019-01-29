@@ -26,6 +26,10 @@ export const Container = styled.div`
   height: auto;
   box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.15);
 
+  @media print {
+    padding-bottom: 20px;
+  }
+
   h2 {
     width: 100%;
     height: 17px;

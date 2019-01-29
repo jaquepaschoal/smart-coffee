@@ -6,6 +6,9 @@ import ReactCountdownClock from "react-countdown-clock";
 import Header from "../../components/Header";
 
 class Final extends Component {
+  print() {
+    window.print();
+  }
   render() {
     return (
       <Container>
@@ -27,10 +30,12 @@ class Final extends Component {
           </Countdown>
           <Coupon>SC123456</Coupon>
           <ContentButtons>
-            <Button reload>
+            <Button to={"/recipes"} reload>
               <i className="fas fa-redo-alt" />
             </Button>
-            <Button print>Imprimir cupom</Button>
+            <Button to={"/final"} onClick={this.print} print>
+              Imprimir cupom
+            </Button>
           </ContentButtons>
         </Main>
       </Container>

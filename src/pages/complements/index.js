@@ -8,56 +8,11 @@ import { Container, Product, Separator } from "../../styles/global";
 import { Ingredients, ContentButtons, Button } from "./style";
 
 class Complements extends Component {
-  state = {
-    counter: 0,
-    isError: false
-  };
-
-  handleCheck(e) {
-    const checks = document.getElementsByName(e.target.name);
-    let count = this.state.counter;
-
-    if (e.target.checked) {
-      count++;
-      valueLimit(count) ? check(e.target, this) : false;
-    } else {
-      count--;
-      if (!valueLimit(count)) {
-        uncheck(e.target, this);
-      }
-    }
-
-    function check(value, component) {
-      return checks.forEach(value => {
-        if (!value.checked) {
-          value.disabled = true;
-          component.setState({ isError: true });
-        }
-      });
-    }
-
-    function uncheck(value, component) {
-      return checks.forEach(value => {
-        if (value.disabled) {
-          value.disabled = false;
-          component.setState({ isError: false });
-        }
-      });
-    }
-
-    function valueLimit(count) {
-      return count === 2 ? true : false;
-    }
-
-    this.setState({ counter: count });
-  }
-
   render() {
     return (
       <Container>
         <Header />
         <h2>Adicione complementos ao seu pedido</h2>
-        {this.state.isError && <Error />}
         <Product>
           <div>
             <figure>
@@ -81,13 +36,7 @@ class Complements extends Component {
               </div>
             </div>
             <div name="check">
-              <input
-                type="checkbox"
-                onClick={e => this.handleCheck(e)}
-                id="1"
-                name="inp-check"
-                value="1"
-              />
+              <input type="checkbox" id="1" name="inp-check" value="1" />
               <label htmlFor="1" />
             </div>
           </Product>
@@ -104,13 +53,7 @@ class Complements extends Component {
               </div>
             </div>
             <div name="check">
-              <input
-                type="checkbox"
-                onClick={e => this.handleCheck(e)}
-                id="2"
-                name="inp-check"
-                value="2"
-              />
+              <input type="checkbox" id="2" name="inp-check" value="2" />
               <label htmlFor="2" />
             </div>
           </Product>
@@ -127,13 +70,7 @@ class Complements extends Component {
               </div>
             </div>
             <div name="check">
-              <input
-                type="checkbox"
-                onClick={e => this.handleCheck(e)}
-                id="3"
-                name="inp-check"
-                value="3"
-              />
+              <input type="checkbox" id="3" name="inp-check" value="3" />
               <label htmlFor="3" />
             </div>
           </Product>
@@ -162,21 +99,19 @@ class Complements extends Component {
               </div>
             </div>
             <div name="check">
-              <input
-                type="checkbox"
-                onClick={e => this.handleCheck(e)}
-                id="4"
-                name="inp-check"
-                value="4"
-              />
+              <input type="checkbox" id="4" name="inp-check" value="4" />
               <label htmlFor="4" />
             </div>
           </Product>
         </Ingredients>
         <Separator />
         <ContentButtons>
-          <Button orange>Voltar</Button>
-          <Button green>Finalizar</Button>
+          <Button to={"/recipes"} orange={"true"}>
+            Voltar
+          </Button>
+          <Button to={"/final"} green={"true"}>
+            Finalizar
+          </Button>
         </ContentButtons>
       </Container>
     );

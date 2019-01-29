@@ -1,6 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import { Container, Image, ButtonContent } from "./style";
+
+import { Image, ButtonContent, Form } from "./style";
+import { Container, Product, Separator } from "../../styles/global";
+
+import { Link } from "react-router-dom";
 
 import Coffee from "../../assets/coffee.svg";
 
@@ -11,7 +15,7 @@ class Login extends Component {
         <Image>
           <img src={Coffee} />
         </Image>
-        <form>
+        <Form>
           <div>
             <label>Nome completo</label>
             <input type="text" />
@@ -20,9 +24,9 @@ class Login extends Component {
             <label>E-mail</label>
             <input type="text" />
           </div>
-        </form>
+        </Form>
         <ButtonContent>
-          <button>Cadastrar</button>
+          <Link to={"/recipes"}>Cadastrar</Link>
         </ButtonContent>
       </Container>
     );
