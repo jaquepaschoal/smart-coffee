@@ -12,20 +12,54 @@ import { Creators as RecipesActions } from "../../store/ducks/recipes";
 import { bindActionCreators } from "redux";
 
 class Recipes extends Component {
-  // state = {
-  //   counter: 0,
-  //   isError: false
-  // };
+  state = {
+    counter: 0
+  };
 
   handleCheck(e) {
+    console.log(this.props);
     const checks = document.getElementsByName(e.target.name);
-    this.props.handleChecks(checks, e.target);
+    let count = this.state.counter;
+
+    if (e.target.checked) {
+      count++;
+      valueLimit(count) ? check(e.target) : false;
+    } else {
+      count--;
+      if (!valueLimit(count)) {
+        uncheck(e.target);
+      }
+    }
+
+    function check(value) {
+      return checks.forEach(value => {
+        if (!value.checked) {
+          value.disabled = true;
+          this.props.isError();
+        }
+      });
+    }
+
+    function uncheck(value) {
+      return checks.forEach(value => {
+        if (value.disabled) {
+          value.disabled = false;
+          this.props.isError();
+        }
+      });
+    }
+
+    function valueLimit(count) {
+      return count === 2 ? true : false;
+    }
+
+    this.setState({ counter: count });
   }
   render() {
     return (
       <Container>
         <Header />
-        {this.state.isError && (
+        {this.props.recipes.error && (
           <Error text={"Selecione no máximo 02 complementos!"} />
         )}
         <Product>
