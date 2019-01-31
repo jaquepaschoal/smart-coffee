@@ -1,8 +1,8 @@
-import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import React, { Component } from "react";
+// import PropTypes from "prop-types";
 
 import { Image, ButtonContent, Form } from "./style";
-import { Container, Product, Separator } from "../../styles/global";
+import { Container } from "../../styles/global";
 
 import { Link } from "react-router-dom";
 
@@ -13,7 +13,7 @@ class Login extends Component {
     return (
       <Container>
         <Image>
-          <img src={Coffee} />
+          <img src={Coffee} alt="Coffee" />
         </Image>
         <Form>
           <div>

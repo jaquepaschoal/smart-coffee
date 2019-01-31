@@ -17,7 +17,7 @@ class Recipes extends Component {
   };
 
   handleCheck(e) {
-    console.log(this.props);
+    const props = this.props;
     const checks = document.getElementsByName(e.target.name);
     let count = this.state.counter;
 
@@ -35,7 +35,7 @@ class Recipes extends Component {
       return checks.forEach(value => {
         if (!value.checked) {
           value.disabled = true;
-          this.props.isError();
+          props.isError(true);
         }
       });
     }
@@ -44,7 +44,7 @@ class Recipes extends Component {
       return checks.forEach(value => {
         if (value.disabled) {
           value.disabled = false;
-          this.props.isError();
+          props.isError(false);
         }
       });
     }

@@ -10,7 +10,7 @@ const INITIAL_STATE = {
 export default function recipes(state = INITIAL_STATE, action) {
   switch (action.type) {
     case Types.IS_ERROR:
-      console.log("oi");
+      return { ...state, error: action.payload.type };
 
     default:
       return state;
@@ -18,7 +18,8 @@ export default function recipes(state = INITIAL_STATE, action) {
 }
 
 export const Creators = {
-  isError: () => ({
-    type: Types.IS_ERROR
+  isError: type => ({
+    type: Types.IS_ERROR,
+    payload: { type }
   })
 };

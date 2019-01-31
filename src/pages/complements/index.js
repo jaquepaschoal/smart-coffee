@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
-import Error from "../../components/Error";
 
 import DoubleCoffee from "../../assets/cafe-duplo.svg";
 
