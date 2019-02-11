@@ -1,17 +1,16 @@
 import React from "react";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
+import Error from '../../components/Error'
 import * as Yup from "yup";
 
 import { Container } from "../../styles/global";
-import { Image } from "./style";
+import { Image, FormContent } from "./style";
 import Coffee from "../../assets/coffee.svg";
 
 const schema = Yup.object().shape({
   name: Yup.string()
     .required("Informe o nome!")
-    .min(5, "O nome deve conter mais de 5 letras!")
-    .max(100, "O nome deve conter menos de 100 letras!")
-    .notOneOf(["admin", "administrador"], "Esse nome não pode camarada!"),
+    .notOneOf(["admin", "administrador"], "Esse usuário não pode ser usado!"),
   email: Yup.string()
     .required("Informe o email!")
     .email("Informe um email válido!")
@@ -35,20 +34,24 @@ const Login = props => {
       <Image>
         <img src={Coffee} alt="Coffee" />
       </Image>
-      <Form>
-        <div>
-          <label>Nome completo</label>
-          <Field name="name" placeholder="Nome" /> <br />
-          <ErrorMessage name="name" />
-        </div>
-        <div>
-          <label>Nome completo</label>
-          <Field name="email" placeholder="Email" />
-          <br />
-          <ErrorMessage name="email" />
-        </div>
-        <button type="submit">Enviar</button>
-      </Form>
+      <FormContent >
+        <Form className="form">
+          <div>
+            <label>Nome completo</label>
+            <Field name="name" />
+            <ErrorMessage name="name" render={msg => <Error text={msg}/>} />
+          </div>
+          <div>
+            <label>E-mail</label>
+            <Field name="email"  />
+            <ErrorMessage name="email" render={msg => <Error text={msg}/>}/>
+          </div>
+          <div className="contentButton">
+            <button type="submit">Enviar</button>
+          </div>
+        </Form>
+      </FormContent>
+
     </Container>
   );
 };
