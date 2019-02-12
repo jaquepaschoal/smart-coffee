@@ -1,11 +1,15 @@
 import React from "react";
 import { withFormik, Form, Field, ErrorMessage } from "formik";
-import Error from '../../components/Error'
+import Error from "../../components/Error";
 import * as Yup from "yup";
 
 import { Container } from "../../styles/global";
 import { Image, FormContent } from "./style";
 import Coffee from "../../assets/coffee.svg";
+
+import { connect } from "react-redux";
+import { Creators as LoginActions } from "../../store/ducks/login";
+import { bindActionCreators } from "redux";
 
 const schema = Yup.object().shape({
   name: Yup.string()
@@ -18,8 +22,8 @@ const schema = Yup.object().shape({
 
 const enhanceWithFormik = withFormik({
   mapPropsToValues: () => ({ name: "", email: "" }),
-  handleSubmit: values => {
-    console.log(values);
+  handleSubmit: (values, formikBag) => {
+    formikBag.props.addUser(values.name, values.email);
   },
   isInitialValid: false,
   validateOnChange: true,
@@ -34,26 +38,34 @@ const Login = props => {
       <Image>
         <img src={Coffee} alt="Coffee" />
       </Image>
-      <FormContent >
+      <FormContent>
         <Form className="form">
           <div>
             <label>Nome completo</label>
             <Field name="name" />
-            <ErrorMessage name="name" render={msg => <Error text={msg}/>} />
+            <ErrorMessage name="name" render={msg => <Error text={msg} />} />
           </div>
           <div>
             <label>E-mail</label>
-            <Field name="email"  />
-            <ErrorMessage name="email" render={msg => <Error text={msg}/>}/>
+            <Field name="email" />
+            <ErrorMessage name="email" render={msg => <Error text={msg} />} />
           </div>
           <div className="contentButton">
             <button type="submit">Enviar</button>
           </div>
         </Form>
       </FormContent>
-
     </Container>
   );
 };
+const mapStateToProps = state => ({
+  login: state.login
+});
 
-export default enhanceWithFormik(Login);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(LoginActions, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(enhanceWithFormik(Login));
