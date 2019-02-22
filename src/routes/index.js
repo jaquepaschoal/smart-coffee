@@ -1,5 +1,6 @@
 import React, { Fragment } from "react";
-import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { ConnectedRouter } from "connected-react-router";
 
 import { isAuthenticated } from "../services/auth";
 
@@ -7,6 +8,7 @@ import Login from "../pages/login";
 import Recipes from "../pages/recipes";
 import Complements from "../pages/complements";
 import Final from "../pages/final";
+import history from "./history";
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
@@ -22,7 +24,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 const Routes = () => (
-  <BrowserRouter>
+  <ConnectedRouter>
     <Fragment>
       <Switch>
         <Route exact path="/" component={Login} />
@@ -32,7 +34,7 @@ const Routes = () => (
         <Route path="*" component={() => <h1>Page not found.</h1>} />
       </Switch>
     </Fragment>
-  </BrowserRouter>
+  </ConnectedRouter>
 );
 
 export default Routes;

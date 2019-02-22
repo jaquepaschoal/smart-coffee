@@ -11,6 +11,16 @@ import { connect } from "react-redux";
 import { Creators as LoginActions } from "../../store/ducks/login";
 import { bindActionCreators } from "redux";
 
+const couponCode = length => {
+  let code = "";
+  const possible =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+  for (let i = 0; i < length; i++) {
+    code += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+  return code;
+};
+
 const schema = Yup.object().shape({
   name: Yup.string()
     .required("Informe o nome!")
@@ -23,7 +33,7 @@ const schema = Yup.object().shape({
 const enhanceWithFormik = withFormik({
   mapPropsToValues: () => ({ name: "", email: "" }),
   handleSubmit: (values, formikBag) => {
-    formikBag.props.addUser(values.name, values.email);
+    formikBag.props.addUserRequest(values.name, values.email, couponCode(6));
   },
   isInitialValid: false,
   validateOnChange: true,
