@@ -1,8 +1,7 @@
 import api from "../../services/api";
 import { call, put } from "redux-saga/effects";
-
+import { push } from "connected-react-router";
 import { Creators as LoginActions } from "../ducks/login";
-// import { push } from "react-router-dom";
 
 export function* makeLogin(action) {
   try {
@@ -12,7 +11,7 @@ export function* makeLogin(action) {
       email: email,
       coupon_code: code
     });
-    // push("/recipe");
+    push("../../pages/recipes");
     yield put(LoginActions.addUserSuccess(response.data));
   } catch (err) {
     console.log("Could not insert client.");

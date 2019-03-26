@@ -24,7 +24,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
 );
 
 const Routes = () => (
-  <ConnectedRouter>
+  <ConnectedRouter history={history}>
     <Fragment>
       <Switch>
         <Route exact path="/" component={Login} />
