@@ -61,7 +61,8 @@ export const FormContent = styled.div`
         text-transform: uppercase;
         font-family: Lato;
         font-size: 14px;
-        margin-bottom: 53px;
+        margin-top: 10px;
+        margin-bottom: 43px;
         line-height: 1.36;
         letter-spacing: 2.4px;
         text-align: center;

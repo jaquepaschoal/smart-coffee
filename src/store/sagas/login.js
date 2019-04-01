@@ -11,7 +11,7 @@ export function* makeLogin(action) {
       email: email,
       coupon_code: code
     });
-    push("../../pages/recipes");
+    yield put(push("/recipes"));
     yield put(LoginActions.addUserSuccess(response.data));
   } catch (err) {
     console.log("Could not insert client.");

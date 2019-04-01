@@ -21,6 +21,10 @@ class Recipes extends Component {
     const checks = document.getElementsByName(e.target.name);
     let count = this.state.counter;
 
+    const valueLimit = count => {
+      return count === 2 ? true : false;
+    };
+
     if (e.target.checked) {
       count++;
       valueLimit(count) ? check(e.target) : false;
@@ -49,19 +53,16 @@ class Recipes extends Component {
       });
     }
 
-    function valueLimit(count) {
-      return count === 2 ? true : false;
-    }
-
     this.setState({ counter: count });
   }
   render() {
     return (
       <Container>
         <Header />
-        {this.props.recipes.error && (
+        {console.log(this.props.isError)}
+        {/* {this.props.recipes.error && (
           <Error text={"Selecione no máximo 02 complementos!"} />
-        )}
+        )} */}
         <Product>
           <div>
             <figure>
