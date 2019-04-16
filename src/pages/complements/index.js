@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import Header from "../../components/Header";
 
-import DoubleCoffee from "../../assets/cafe-duplo.svg";
-
 import { Container, Product, Separator } from "../../styles/global";
 import { Ingredients, ContentButtons, Button } from "./style";
 
@@ -15,7 +13,10 @@ class Complements extends Component {
         <Product>
           <div>
             <figure>
-              <img alt="Double Coffee" src={DoubleCoffee} />
+              <img
+                alt="Double Coffee"
+                src={require("../../assets/images/cafe-duplo.svg")}
+              />
             </figure>
             <div>
               <h3>Café Duplo</h3>
@@ -27,7 +28,10 @@ class Complements extends Component {
           <Product>
             <div>
               <figure>
-                <img alt="Double Coffee" src={DoubleCoffee} />
+                <img
+                  alt="Double Coffee"
+                  src={require("../../assets/images/cafe-duplo.svg")}
+                />
               </figure>
               <div>
                 <h3>Café Duplo</h3>
@@ -44,7 +48,10 @@ class Complements extends Component {
           <Product>
             <div>
               <figure>
-                <img alt="Double Coffee" src={DoubleCoffee} />
+                <img
+                  alt="Double Coffee"
+                  src={require("../../assets/images/cafe-duplo.svg")}
+                />
               </figure>
               <div>
                 <h3>Café Duplo</h3>
@@ -61,7 +68,10 @@ class Complements extends Component {
           <Product>
             <div>
               <figure>
-                <img alt="Double Coffee" src={DoubleCoffee} />
+                <img
+                  alt="Double Coffee"
+                  src={require("../../assets/images/cafe-duplo.svg")}
+                />
               </figure>
               <div>
                 <h3>Café Duplo</h3>
@@ -78,7 +88,10 @@ class Complements extends Component {
         <Product>
           <div>
             <figure>
-              <img alt="Double Coffee" src={DoubleCoffee} />
+              <img
+                alt="Double Coffee"
+                src={require("../../assets/images/cafe-duplo.svg")}
+              />
             </figure>
             <div>
               <h3>Café Duplo</h3>
@@ -90,7 +103,10 @@ class Complements extends Component {
           <Product>
             <div>
               <figure>
-                <img alt="Double Coffee" src={DoubleCoffee} />
+                <img
+                  alt="Double Coffee"
+                  src={require("../../assets/images/cafe-duplo.svg")}
+                />
               </figure>
               <div>
                 <h3>Café Duplo</h3>

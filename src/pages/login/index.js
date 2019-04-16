@@ -5,7 +5,7 @@ import * as Yup from "yup";
 
 import { Container } from "../../styles/global";
 import { Image, FormContent } from "./style";
-import Coffee from "../../assets/coffee.svg";
+import Coffee from "../../assets/images/coffee.svg";
 
 import { connect } from "react-redux";
 import { Creators as LoginActions } from "../../store/ducks/login";
@@ -37,7 +37,6 @@ const enhanceWithFormik = withFormik({
   },
   isInitialValid: false,
   validateOnChange: true,
-  validateOnBlur: true,
   displayName: "MyForm",
   validationSchema: schema
 });

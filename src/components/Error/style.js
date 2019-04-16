@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-width: 100%;
+  width: 100%;
   line-height: 22px;
   font-size: 12px;
   margin-bottom: 10px;
-  text-align: left;
+  text-align: center;
   font-weight: 600;
   border-radius: 2px;
   font-family: "PT Sans", sans-serif;

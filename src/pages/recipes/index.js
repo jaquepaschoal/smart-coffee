@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import Header from "../../components/Header";
 import Error from "../../components/Error";
 
-import DoubleCoffee from "../../assets/cafe-duplo.svg";
-
 import { Container, Product, Separator } from "../../styles/global";
 import { Button, ContentButton } from "./style";
 
@@ -15,6 +13,57 @@ class Recipes extends Component {
   state = {
     counter: 0
   };
+
+  componentDidMount() {
+    this.props.getRecipesRequest();
+  }
+
+  renderRecipes() {
+    const recipes = this.props.recipes.data;
+
+    return (
+      <Container>
+        <Header />
+        {this.props.recipes.error && (
+          <Error text="Você só pode escolher dois itens!" />
+        )}
+        {recipes &&
+          recipes.map(recipe => {
+            return (
+              <div key={recipe.id}>
+                <Product>
+                  <div>
+                    <figure>
+                      <img
+                        alt={recipe.name}
+                        src={require(`../../assets/${recipe.photo}`)}
+                      />
+                    </figure>
+                    <div>
+                      <h3>{recipe.name}</h3>
+                      <small>0:45min</small>
+                    </div>
+                  </div>
+                  <div name="check">
+                    <input
+                      type="checkbox"
+                      onClick={e => this.handleCheck(e)}
+                      id={recipe.id}
+                      name="inp-check"
+                    />
+                    <label htmlFor={recipe.id} />
+                  </div>
+                </Product>
+                <Separator />
+              </div>
+            );
+          })}
+        <ContentButton>
+          <Button to={"/complements"}>Continuar</Button>
+        </ContentButton>
+      </Container>
+    );
+  }
 
   handleCheck(e) {
     const props = this.props;
@@ -55,82 +104,15 @@ class Recipes extends Component {
 
     this.setState({ counter: count });
   }
+
   render() {
-    return (
+    return this.props.recipes.loading ? (
       <Container>
         <Header />
-        {console.log(this.props.isError)}
-        {/* {this.props.recipes.error && (
-          <Error text={"Selecione no máximo 02 complementos!"} />
-        )} */}
-        <Product>
-          <div>
-            <figure>
-              <img alt="Double Coffee" src={DoubleCoffee} />
-            </figure>
-            <div>
-              <h3>Café Duplo</h3>
-              <small>0:45min</small>
-            </div>
-          </div>
-          <div name="check">
-            <input
-              type="checkbox"
-              onClick={e => this.handleCheck(e)}
-              id="1"
-              name="inp-check"
-            />
-            <label htmlFor="1" />
-          </div>
-        </Product>
-        <Separator />
-        <Product>
-          <div>
-            <figure>
-              <img alt="Double Coffee" src={DoubleCoffee} />
-            </figure>
-            <div>
-              <h3>Café Duplo</h3>
-              <small>0:45min</small>
-            </div>
-          </div>
-          <div name="check">
-            <input
-              type="checkbox"
-              onClick={e => this.handleCheck(e)}
-              id="2"
-              name="inp-check"
-            />
-            <label htmlFor="2" />
-          </div>
-        </Product>
-        <Separator />
-        <Separator />
-        <Product>
-          <div>
-            <figure>
-              <img alt="Double Coffee" src={DoubleCoffee} />
-            </figure>
-            <div>
-              <h3>Café Duplo</h3>
-              <small>0:45min</small>
-            </div>
-          </div>
-          <div name="check">
-            <input
-              type="checkbox"
-              onClick={e => this.handleCheck(e)}
-              id="3"
-              name="inp-check"
-            />
-            <label htmlFor="3" />
-          </div>
-        </Product>
-        <Separator />
-        <ContentButton>
-          <Button to={"/complements"}>Continuar</Button>
-        </ContentButton>
+        Carregando
       </Container>
+    ) : (
+      this.renderRecipes()
     );
   }
 }

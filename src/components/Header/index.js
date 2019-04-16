@@ -2,13 +2,11 @@ import React, { Fragment } from "react";
 
 import { Container, Separator } from "./style";
 
-import Coffee from "../../assets/coffee.svg";
-
 const Header = () => (
   <Fragment>
     <Container>
       <div>
-        <img src={Coffee} alt="Coffee" />
+        <img src={require("../../assets/images/coffee.svg")} alt="Coffee" />
       </div>
       <div>
         <h1>Smart Coffee</h1>

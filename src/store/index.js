@@ -5,13 +5,13 @@ import createSagaMiddleware from "redux-saga";
 import { combineReducers } from "redux";
 
 import loginReducer from "../store/ducks/login";
-
-// import reducers from "./ducks";
+import recipesReducer from "../store/ducks/recipes";
 import sagas from "./sagas";
 
 const rootReducer = combineReducers({
   router: connectRouter(history),
-  login: loginReducer
+  login: loginReducer,
+  recipes: recipesReducer
 });
 
 const sagaMonitor =
